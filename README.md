@@ -44,9 +44,11 @@ We use Firebase to store user history and information.
 
 
 
-Database: Firebased
-List of android system components expected to implement: TODO
-Mockup: TODO
+**TODO**
+List of android system components expected to implement
+Mockup
+Implementation
+
 
 
 

@@ -16,14 +16,14 @@ history of covid check
  
  1. have list of symptoms and questionaires for ppl to check -- Kaleb
  
- 2. How to determine what categories the person fit: based on Age, living envi -> Result: no symp, quanrantine, crit: send to crit page -- Hammad
+ 2. How to determine what categories the person fit: based on Age, living envi -> Result: no symp, quarantine, crit: send to crit page -- Hammad
  
  3. Store the result in database -- Beatrix
  
--- **Have information about what to do in some critical situations.** - Kaleb
+- **Have information about what to do in some critical situations.** - Kaleb
 Questions list to decided if the person should stay home or go to doc...aka things to do if they have COVID or if someone they knows have it
 
--- **General info** - Hammad
+- **General info** - Hammad
 general COVId situation inclusidn medications, news, updated, cases
 
 

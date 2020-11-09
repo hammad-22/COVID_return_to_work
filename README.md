@@ -19,7 +19,7 @@ COVID-19 Return to Work app.
     - **Register page**:  unique username, unique email, password, age, gender - Beatrix 
     - **Login page**: username, password - Beatrix
 
-- **Home page**: (Default) Contain general information, button to register and log in - Hammad
+- **Home page**: Contain general information, button to register and log in - Hammad
 
     - **Register page**:  unique username, unique email, password, age, gender) - Beatrix 
     

@@ -15,15 +15,11 @@ COVID-19 Return to Work app.
    The users should be able to see general COVID information including medications, news, updates, and cases. They also have the ability to register/login to start their daily covid health check or check their health history. The COVID Check feature will enable users to check against the list of COVID symptoms, store the result in history, and have appropriate suggestions based on the result. Depending on the COVID check results, the suggestion feature will give the user the list of suggestions for appropriate actions.
 
 **Architecture and who do what**
-- **Register/Login**: (Default)
+- **Register/Login**: (Default) - Beatrix
     - **Register page**:  unique username, unique email, password, age, gender - Beatrix 
     - **Login page**: username, password - Beatrix
 
 - **Home page**: Contain general information, button to register and log in - Hammad
-
-    - **Register page**:  unique username, unique email, password, age, gender) - Beatrix 
-    
-    - **Login page**: username, password) - Beatrix
     
 - **Bottom Navigation Bar**: Home, User History, COVID Check In, Setting
 

@@ -8,11 +8,11 @@ COVID-19 Return to Work app.
 
 **Application concept**
 
-    The application purpose is to help users to monitor their general health, tracking COVID related information, and suggest appropriate action based on user current health and situations.
+   The application purpose is to help users to monitor their general health, tracking COVID related information, and suggest appropriate action based on user current health and situations.
 
 **Key functionalities**
 
-    The users should be able to see general COVID information including medications, news, updates, and cases. They also have the ability to register/login to start their daily covid health check or check their health history. The COVID Check feature will enable users to check against the list of COVID symptoms, store the result in history, and have appropriate suggestions based on the result. Depending on the COVID check results, the suggestion feature will give the user the list of suggestions for appropriate actions.
+   The users should be able to see general COVID information including medications, news, updates, and cases. They also have the ability to register/login to start their daily covid health check or check their health history. The COVID Check feature will enable users to check against the list of COVID symptoms, store the result in history, and have appropriate suggestions based on the result. Depending on the COVID check results, the suggestion feature will give the user the list of suggestions for appropriate actions.
 
 **Architecture and who do what**
 - **Register/Login**: (Default)
@@ -39,17 +39,17 @@ COVID-19 Return to Work app.
 
 **Android Components**
 
-    Button, Relative Layout, Bottom Navigation Bar, Listview, Fragments, Checkboxes
+   Button, Relative Layout, Bottom Navigation Bar, Listview, Fragments, Checkboxes
 
 **Resources** 
 
-    We use Firebase to store user history and information.
+   We use Firebase to store user history and information.
 
 
 **TODO**
     
-    List of android system components expected to implement
-    Implementation
+   List of android system components expected to implement
+   Implementation
 
 
 

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">COVID Return To Work</string>
+    <string name="title_home">Home</string>
+    <string name="title_checkIn">Check In</string>
+    <string name="title_history">History</string>
+    <string name="title_what_to_do">What To Do</string>
+    <string name="title_logout">Logout</string>
+</resources>

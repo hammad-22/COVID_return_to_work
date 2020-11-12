@@ -5,31 +5,48 @@ Name: Beatrix Tran, Hammad Shahid, Kaleb Dagne
 Group number: 46
 
 COVID-19 Return to Work app.
-Write an app with **nice UI** to help users to monitor the general health and COVID related information. The app main features includes:
 
-- **User** - Beatrix
-register/login/
-history of covid check
+**Application concept**
 
-- **COVID Check** - All 3
- Check against a set of potential COVID-19 symptoms before coming on campus, entering a workplace, entering a shop, etc:
- 
- 1. have list of symptoms and questionaires for ppl to check -- Kaleb
- 
- 2. How to determine what categories the person fit: based on Age, living envi -> Result: no symp, quanrantine, crit: send to crit page -- Hammad
- 
- 3. Store the result in database -- Beatrix
- 
--- **Have information about what to do in some critical situations.** - Kaleb
-Questions list to decided if the person should stay home or go to doc...aka things to do if they have COVID or if someone they knows have it
+   The application purpose is to help users to monitor their general health, tracking COVID related information, and suggest appropriate action based on user current health and situations.
 
--- **General info** - Hammad
-general COVId situation inclusidn medications, news, updated, cases
+**Key functionalities**
+
+   The users should be able to see general COVID information including medications, news, updates, and cases. They also have the ability to register/login to start their daily covid health check or check their health history. The COVID Check feature will enable users to check against the list of COVID symptoms, store the result in history, and have appropriate suggestions based on the result. Depending on the COVID check results, the suggestion feature will give the user the list of suggestions for appropriate actions.
+
+**Architecture and who do what**
+- **Register/Login**: (Default) - Beatrix
+    - **Register page**:  unique username, unique email, password, age, gender - Beatrix 
+    - **Login page**: username, password - Beatrix
+
+- **Home page**: Contain general information, button to register and log in - Hammad
+    
+- **Bottom Navigation Bar**: Home, User History, COVID Check In, Setting
+
+- **History Page**: Contain listview of user COVID check in results starting with the current result - Beatrix
+
+- **Suggestion page**: Additional questionnaires to decide the appropriate action should be taken by the user (what to do if they sick and/or people in their house is sick) -  Kaleb 
+
+- **COVID Check In**:
+    - List (checkbox) of COVID symptoms for user to select (1) - Kaleb
+    - List of questionnaires related to user current living/working environment (2) - Hammad
+    - From (1), (2), determine what categories the person fit: no symptoms, quarantine, critical. If the result is critical, send the user to suggestion page
+    - Store the result in database -- Beatrix
+
+**Android Components**
+
+   Button, Relative Layout, Bottom Navigation Bar, Listview, Fragments, Checkboxes
+
+**Resources** 
+
+   We use Firebase to store user history and information.
 
 
-Database: Firebased
-List of android system components expected to implement: TODO
-Mockup: TODO
+**TODO**
+    
+   List of android system components expected to implement
+   Implementation
+
 
 
 

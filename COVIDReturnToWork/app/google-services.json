@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "268282862058",
+    "firebase_url": "https://covidreturntowork.firebaseio.com",
+    "project_id": "covidreturntowork",
+    "storage_bucket": "covidreturntowork.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268282862058:android:a4f3c3c658c1f8e6103a93",
+        "android_client_info": {
+          "package_name": "com.example.covidreturntowork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268282862058-gq25246m5nr9senq4rm92dgkvq32lv5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwDJIogBT99VweeRL5leP9omEMi11VnNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268282862058-gq25246m5nr9senq4rm92dgkvq32lv5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

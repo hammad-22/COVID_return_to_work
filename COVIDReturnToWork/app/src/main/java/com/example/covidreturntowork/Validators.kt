@@ -24,7 +24,7 @@ class Validators {
             return false
         }
 
-        val passwordRegex = Regex(".[A-Za-z\\d]{4,}\$")
+        val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-zA-Z])(?=\\S+\$).*\$")
         return passwordRegex.matches(password)
     }
 }

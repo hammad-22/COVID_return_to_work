@@ -30,7 +30,7 @@ COVID-19 Return to Work app.
 - **COVID Check In**:
     - List (checkbox) of COVID symptoms for user to select (1) - Kaleb ----- done 
     - List of questionnaires related to user current living/working environment (2) - Hammad
-    - From (1), (2), determine what categories the person fit: no symptoms, quarantine, critical. If the result is critical, send the user to suggestion page - Hammad or Kaleb
+    - From (1), (2), determine what categories the person fit: no symptoms, quarantine, critical. If the result is critical, send the user to suggestion page - Kaleb
     - Store the result in database -- Beatrix
 
 **Android Components**

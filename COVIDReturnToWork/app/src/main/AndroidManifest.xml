@@ -11,7 +11,12 @@
         android:theme="@style/Theme.COVIDReturnToWork">
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".LogoutFragment" />
         <activity android:name=".RegistrationActivity" />
+        <activity android:name=".WTDFragment" />
+        <activity android:name=".HistoryFragment" />
+        <activity android:name=".HomeFragment" />
+        <activity android:name=".CheckinFragment" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

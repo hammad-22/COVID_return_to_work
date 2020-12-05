@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-
+            overridePendingTransition(0,0)
             true
         }
 

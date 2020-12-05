@@ -1,5 +1,7 @@
 package com.example.covidreturntowork
 
+import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -13,41 +15,34 @@ class HomeActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener{
-            var selectedFragment: Fragment? = null
             when(it.itemId) {
                 R.id.navigation_home -> {
-                    selectedFragment = HomeFragment()
+                    val intent = Intent(this, HomeFragment::class.java)
+                    startActivity(intent)
                 }
                 R.id.navigation_whatToDo -> {
-                    selectedFragment = WTDFragment()
+                    val intent = Intent(this, WTDFragment::class.java)
+                    startActivity(intent)
                 }
                 R.id.navigation_history -> {
-                    selectedFragment = HistoryFragment()
+                    val intent = Intent(this, HistoryFragment::class.java)
+                    startActivity(intent)
                 }
                 R.id.navigation_logout -> {
-                    selectedFragment = LogoutFragment()
+                    val intent = Intent(this, LogoutFragment::class.java)
+                    startActivity(intent)
                 }
                 R.id.navigation_checkIn -> {
-                    selectedFragment = CheckinFragment()
+                    val intent = Intent(this, CheckinFragment::class.java)
+                    startActivity(intent)
                 }
             }
-
-            if (selectedFragment != null) {
-                supportFragmentManager.beginTransaction().replace(
-                    R.id.fragment_container,
-                    selectedFragment
-                ).commit()
-            };
+            overridePendingTransition(0,0)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
             true
         }
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fragment_container,
-                HomeFragment()
-            ).commit()
-        }
     }
 
 

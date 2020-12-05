@@ -1,11 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".CheckinFragment">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation"
+        android:background="?android:attr/windowBackground"
+        app:labelVisibilityMode="labeled"/>
+
     <TextView
+        android:id="@+id/instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Checkin fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:textStyle="bold"
+        android:text="Please check the boxes below based on the symptoms you're experiencing:"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        />
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/instructions"
+        android:layout_marginTop="40dp"
+        android:text="Experiencing any irritation in your throat" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBox1"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="24dp"
+        android:text="Experiencing a lost of smell and/or taste" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBox2"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="24dp"
+        android:text="Experiencing shortness of breath or having difficulty breathing" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBox3"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="24dp"
+        android:text="Have a fever or feel hot" />
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBox4"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="24dp"
+        android:text="Experiencing severe chest pain" />
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBox5"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="24dp"
+        android:text="Having a hard time waking up?" />
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBox6"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="24dp"
+        android:text="Have a runny nose" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBox7"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="-43dp"
+        android:text="Submit" />
+
 
 </RelativeLayout>

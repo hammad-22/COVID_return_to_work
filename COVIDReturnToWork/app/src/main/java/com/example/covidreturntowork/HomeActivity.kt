@@ -1,6 +1,7 @@
 package com.example.covidreturntowork
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -37,6 +38,8 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
             overridePendingTransition(0,0)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
             true
         }
 

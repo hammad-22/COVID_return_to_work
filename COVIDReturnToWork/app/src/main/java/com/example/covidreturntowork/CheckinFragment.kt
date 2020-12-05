@@ -11,20 +11,32 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class CheckinFragment : AppCompatActivity() {
+    private var mDatabaseReference: DatabaseReference? = null
+    private var mUserReference: DatabaseReference? = null
+    private var mDatabase: FirebaseDatabase? = null
+    private var mAuth: FirebaseAuth? = null
 
     private lateinit var buttonSubmit: Button
-    private lateinit var databaseResults: DatabaseReference
     private val mResult = arrayListOf<String>("no symptoms", "quarantine", "critical")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_checkin)
+
+        mAuth = FirebaseAuth.getInstance()
+        val uid = mAuth!!.currentUser?.uid
+        mDatabase = FirebaseDatabase.getInstance()
+        mDatabaseReference = mDatabase!!.reference
+        mUserReference = uid?.let { mDatabaseReference!!.child(it) }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener{
@@ -55,18 +67,31 @@ class CheckinFragment : AppCompatActivity() {
         }
 
         buttonSubmit = findViewById(R.id.submitButton)
+        buttonSubmit.setOnClickListener { addResult() }
     }
 
     // Add result to database
     private fun addResult() {
         //TODO change result to real function that call result
         val result = mResult[0]
-        val id = databaseResults.push().key
+        val id = mUserReference!!.push().key
         Log.i("ID", id!!)
         if (id != null) {
-            databaseResults.child(id).setValue(result)
+            val date = getCurrentDateTime()
+            val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")
+            val user = User(dateInString, result)
+            mUserReference!!.child(id).setValue(user)
             Toast.makeText(this, "Result Added", Toast.LENGTH_LONG)
 
         }
+    }
+
+    fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
+    }
+
+    fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
     }
 }

@@ -14,6 +14,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_home
         bottomNavigationView.setOnNavigationItemSelectedListener{
             when(it.itemId) {
                 R.id.navigation_home -> {
@@ -38,10 +39,9 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
             overridePendingTransition(0,0)
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
             true
         }
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 

@@ -40,6 +40,7 @@ class CheckinFragment : AppCompatActivity() {
         mUserReference = uid?.let { mDatabaseReference!!.child(it) }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_checkIn
         bottomNavigationView.setOnNavigationItemSelectedListener{
             when(it.itemId) {
                 R.id.navigation_home -> {
@@ -58,10 +59,6 @@ class CheckinFragment : AppCompatActivity() {
                     val intent = Intent(this, LogoutFragment::class.java)
                     startActivity(intent)
                 }
-                R.id.navigation_checkIn -> {
-                    val intent = Intent(this, CheckinFragment::class.java)
-                    startActivity(intent)
-                }
             }
             overridePendingTransition(0,0)
             true
@@ -69,7 +66,7 @@ class CheckinFragment : AppCompatActivity() {
 
         buttonSubmit = findViewById(R.id.submitButton)
         buttonSubmit.setOnClickListener { addResult() }
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 

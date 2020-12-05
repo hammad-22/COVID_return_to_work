@@ -31,7 +31,7 @@ class LogoutFragment : AppCompatActivity() {
             val intent = Intent(this, HomeFragment::class.java)
             startActivity(intent)
         }
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 }

@@ -70,7 +70,7 @@ class HistoryFragment : AppCompatActivity() {
         mUserReference!!.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                 val value = dataSnapshot.getValue(User::class.java).toString()
-                results.add(value)
+                results.add(0, value)
                 mAdapter.notifyDataSetChanged()
             }
 

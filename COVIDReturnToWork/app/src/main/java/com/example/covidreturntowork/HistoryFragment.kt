@@ -31,6 +31,7 @@ class HistoryFragment : AppCompatActivity() {
         mUserReference = uid?.let { mDatabaseReference!!.child(it) }
 
         listViewResults = findViewById<ListView>(R.id.listViewResults)
+        listViewResults.emptyView = findViewById(R.id.textViewMT)
         results = ArrayList()
         mAdapter = ArrayAdapter<String>(this,R.layout.layout_user_list, R.id.textView ,results)
         listViewResults.adapter = mAdapter

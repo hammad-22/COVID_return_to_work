@@ -1,6 +1,7 @@
 package com.example.covidreturntowork
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -32,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
 
         loginBtn!!.setOnClickListener { loginUserAccount() }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     private fun loginUserAccount() {

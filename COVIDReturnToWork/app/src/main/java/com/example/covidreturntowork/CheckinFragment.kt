@@ -1,6 +1,7 @@
 package com.example.covidreturntowork
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -68,6 +69,8 @@ class CheckinFragment : AppCompatActivity() {
 
         buttonSubmit = findViewById(R.id.submitButton)
         buttonSubmit.setOnClickListener { addResult() }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     // Add result to database

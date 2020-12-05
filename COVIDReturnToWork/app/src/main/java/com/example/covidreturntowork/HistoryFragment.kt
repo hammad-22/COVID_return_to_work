@@ -1,6 +1,7 @@
 package com.example.covidreturntowork
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -61,6 +62,8 @@ class HistoryFragment : AppCompatActivity() {
                 }
             }
             overridePendingTransition(0,0)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
             true
         }
 
@@ -78,29 +81,4 @@ class HistoryFragment : AppCompatActivity() {
         })
     }
 }
-//    override fun onStart() {
-//        super.onStart()
-//
-//        mUserReference!!.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                results!!.clear()
-//
-//                var result: User? = null
-//                for (postSnapshot in dataSnapshot.children) {
-//                    try {
-//                        result = postSnapshot.getValue(User::class.java)
-//                    } catch (e: Exception) {
-//                        Log.e("TAG", e.toString())
-//                    } finally {
-//                        results.add(result!!)
-//                    }
-//                }
-//                val listAdapter = ResultList(this@HistoryFragment, results)
-//                listViewResults.adapter = listAdapter
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                // do nothing
-//            }
-//        })
-//    }
+

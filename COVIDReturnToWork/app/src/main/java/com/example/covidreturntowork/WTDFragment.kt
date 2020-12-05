@@ -41,7 +41,7 @@ class WTDFragment : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-
+            overridePendingTransition(0,0)
             true
         }
     }

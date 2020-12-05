@@ -34,9 +34,6 @@ class LoginActivity : AppCompatActivity() {
         loginBtn!!.setOnClickListener { loginUserAccount() }
     }
 
-    // TODO: Allow the user to log into their account
-    // If the email and password are not empty, try to log in
-    // If the login is successful, store info into intent and launch DashboardActivity
     private fun loginUserAccount() {
         progressBar?.visibility = View.VISIBLE
 

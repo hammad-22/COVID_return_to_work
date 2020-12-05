@@ -62,7 +62,7 @@ class CheckinFragment : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-
+            overridePendingTransition(0,0)
             true
         }
 
@@ -75,7 +75,6 @@ class CheckinFragment : AppCompatActivity() {
         //TODO change result to real function that call result
         val result = mResult[0]
         val id = mUserReference!!.push().key
-        Log.i("ID", id!!)
         if (id != null) {
             val date = getCurrentDateTime()
             val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")

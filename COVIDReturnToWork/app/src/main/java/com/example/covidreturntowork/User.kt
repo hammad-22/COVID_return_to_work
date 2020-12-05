@@ -1,6 +1,8 @@
 package com.example.covidreturntowork
 
-class User(date: String?, result: String?) {
-    var date = date
-    var result = result
+data class User(var date: String? = "", var result: String? = "") {
+    override fun toString(): String {
+        return "Date: " + date + System.lineSeparator() + "Result: " + result
+
+    }
 }

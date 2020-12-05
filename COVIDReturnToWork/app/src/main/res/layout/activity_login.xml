@@ -6,7 +6,7 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.example.lab7_firebase.LoginActivity">
+    tools:context="com.example.covidreturntowork.LoginActivity">
 
     <TextView
         android:layout_width="wrap_content"

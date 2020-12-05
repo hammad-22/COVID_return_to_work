@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/generalStatistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -16,10 +17,9 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="42dp"
         android:gravity="center"
-        android:text="Daily New Cases"
+        android:text="Daily Change"
         android:textSize="25sp" />
 
 

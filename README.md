@@ -23,15 +23,15 @@ COVID-19 Return to Work app.
     
 - **Bottom Navigation Bar**: Home, User History, COVID Check In, Logout - Beatrix ----- done
 
-- **History Page**: Contain listview of user COVID check in results starting with the current result - Beatrix
+- **History Page**: Contain listview of user COVID check in results starting with the current result - Beatrix ----- done
 
 - **Suggestion page**: Additional questionnaires to decide the appropriate action should be taken by the user (what to do if they sick and/or people in their house is sick) -  Kaleb 
 
 - **COVID Check In**:
     - List (checkbox) of COVID symptoms for user to select (1) - Kaleb ----- done 
     - List of questionnaires related to user current living/working environment (2) - Hammad
-    - From (1), (2), determine what categories the person fit: no symptoms, quarantine, critical. If the result is critical, send the user to suggestion page - Kaleb
-    - Store the result in database -- Beatrix
+    - From (1), (2), determine what categories the person fit: no symptoms, quarantine, critical. If the result is critical, send the user to suggestion page - Kaleb or Hammad
+    - Store the result in database -- Beatrix ----- done
 
 **Android Components**
 

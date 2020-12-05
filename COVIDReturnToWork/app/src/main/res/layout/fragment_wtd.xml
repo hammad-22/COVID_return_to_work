@@ -5,14 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".WTDFragment">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="What to do fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+    tools:context=".CheckinFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -22,5 +15,17 @@
         app:menu="@menu/bottom_navigation"
         android:background="?android:attr/windowBackground"
         app:labelVisibilityMode="labeled"/>
+
+    <TextView
+        android:id="@+id/instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Please check the boxes below based on the symptoms you're experiencing:"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        />
+
+
 
 </RelativeLayout>

@@ -10,7 +10,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-
 class HistoryFragment : AppCompatActivity() {
 
     private var mDatabaseReference: DatabaseReference? = null
@@ -38,6 +37,7 @@ class HistoryFragment : AppCompatActivity() {
 
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_history
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_home -> {
@@ -46,10 +46,6 @@ class HistoryFragment : AppCompatActivity() {
                 }
                 R.id.navigation_whatToDo -> {
                     val intent = Intent(this, WTDFragment::class.java)
-                    startActivity(intent)
-                }
-                R.id.navigation_history -> {
-                    val intent = Intent(this, HistoryFragment::class.java)
                     startActivity(intent)
                 }
                 R.id.navigation_logout -> {
@@ -62,8 +58,6 @@ class HistoryFragment : AppCompatActivity() {
                 }
             }
             overridePendingTransition(0,0)
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
             true
         }
 
@@ -79,6 +73,9 @@ class HistoryFragment : AppCompatActivity() {
             override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {}
             override fun onCancelled(databaseError: DatabaseError) {}
         })
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
     }
 }
 

@@ -1,18 +1,12 @@
 package com.example.covidreturntowork
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class WTDFragment : AppCompatActivity() {
@@ -85,19 +79,18 @@ class WTDFragment : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle){
-
-
         outState.putString("Result", instructions.text.toString())
         super.onSaveInstanceState(outState)
     }
 
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-
         super.onRestoreInstanceState(savedInstanceState)
 
         savedResult = savedInstanceState.getString("Result").toString()
         instructions.text = savedResult
+
+       requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 }

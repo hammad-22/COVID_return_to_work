@@ -3,11 +3,6 @@ package com.example.covidreturntowork
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Toast
@@ -125,7 +120,6 @@ class CheckinFragment : AppCompatActivity() {
 
     // Add result to database
     private fun addResult() {
-        //TODO change result to real function that call result
         val result = findResult()
         val id = mUserReference!!.push().key
         if (id != null) {
@@ -151,4 +145,5 @@ class CheckinFragment : AppCompatActivity() {
     fun getCurrentDateTime(): Date {
         return Calendar.getInstance().time
     }
+
 }

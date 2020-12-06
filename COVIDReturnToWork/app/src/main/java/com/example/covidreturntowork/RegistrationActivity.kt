@@ -1,6 +1,7 @@
 package com.example.covidreturntowork
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -31,6 +32,8 @@ class RegistrationActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
 
         regBtn!!.setOnClickListener { registerNewUser() }
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     private fun registerNewUser() {

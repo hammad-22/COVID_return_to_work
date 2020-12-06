@@ -1,19 +1,22 @@
 package com.example.covidreturntowork
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class WTDFragment : AppCompatActivity() {
+
+    private lateinit var mResult: String
+    private lateinit var instructions: TextView
+    private var savedResult = "No Information Inputted"
+
+    private val sharedPrefFile = "Result"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_wtd)
@@ -42,7 +45,52 @@ class WTDFragment : AppCompatActivity() {
             overridePendingTransition(0,0)
             true
         }
+
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+
+        instructions = findViewById(R.id.instructions)
+        if(intent.getStringExtra("Result") != null) {
+
+            mResult = intent.getStringExtra("Result").toString()
+            instructions.text = mResult
+            val editor:SharedPreferences.Editor = sharedPreferences.edit()
+
+            editor.putString("Result", instructions.text.toString())
+            editor.apply()
+            editor.commit()
+        } else {
+            if(!(sharedPreferences.getString("Result", "").equals(""))){
+                val sharedNameValue = sharedPreferences.getString("Result","")
+                instructions.text = sharedNameValue
+            } else {
+                instructions.text = savedResult
+            }
+        }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle){
+        outState.putString("Result", instructions.text.toString())
+        super.onSaveInstanceState(outState)
+    }
+
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        savedResult = savedInstanceState.getString("Result").toString()
+        instructions.text = savedResult
+
+       requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 }

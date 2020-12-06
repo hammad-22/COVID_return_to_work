@@ -14,8 +14,6 @@ class WTDFragment : AppCompatActivity() {
 
     private lateinit var mResult: String
     private lateinit var instructions: TextView
-    /*private lateinit var WTD: TextView
-    private lateinit var underline: View*/
     private lateinit var firstStep: TextView
     private lateinit var subFirstStep: TextView
     private lateinit var secondStep: TextView
@@ -65,8 +63,7 @@ class WTDFragment : AppCompatActivity() {
 
 
         instructions = findViewById(R.id.instructions)
-        /*WTD = findViewById(R.id.whatToDo)
-        underline = findViewById(R.id.underline)*/
+
         firstStep = findViewById(R.id.firstStep)
         secondStep = findViewById(R.id.secondStep)
         thirdStep = findViewById(R.id.thirdStep)
@@ -76,15 +73,7 @@ class WTDFragment : AppCompatActivity() {
         subThirdStep = findViewById(R.id.subThirdStep)
         subFourthStep = findViewById(R.id.subFourthStep)
 
-        /*firstStep.visibility = View.GONE
-        secondStep.visibility = View.GONE
-        thirdStep.visibility = View.GONE
-        subFirstStep.visibility = View.GONE
-        subSecondStep.visibility = View.GONE
-        subThirdStep.visibility = View.GONE*/
 
-
-        /*underline.visibility = View.GONE*/
 
 
 

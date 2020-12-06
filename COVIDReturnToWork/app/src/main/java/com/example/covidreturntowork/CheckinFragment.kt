@@ -3,11 +3,6 @@ package com.example.covidreturntowork
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Toast
@@ -27,7 +22,7 @@ class CheckinFragment : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
 
     private lateinit var buttonSubmit: Button
-    private val mResult = arrayListOf<String>("no symptoms", "quarantine", "critical")
+    private val mResult = arrayListOf<String>("No Symptoms", "Quarantine", "Critical")
 
     private lateinit var checkBox1: CheckBox
     private lateinit var checkBox2: CheckBox
@@ -107,7 +102,7 @@ class CheckinFragment : AppCompatActivity() {
         if(checkBox6.isChecked){
             count += 1
         }
-        if(checkBox1.isChecked){
+        if(checkBox7.isChecked){
             count += 2
         }
         var toReturn: String
@@ -125,7 +120,6 @@ class CheckinFragment : AppCompatActivity() {
 
     // Add result to database
     private fun addResult() {
-        //TODO change result to real function that call result
         val result = findResult()
         val id = mUserReference!!.push().key
         if (id != null) {
@@ -151,4 +145,5 @@ class CheckinFragment : AppCompatActivity() {
     fun getCurrentDateTime(): Date {
         return Calendar.getInstance().time
     }
+
 }

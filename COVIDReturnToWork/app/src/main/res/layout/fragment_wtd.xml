@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".CheckinFragment">
+    tools:context=".WTDFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -17,15 +17,122 @@
         app:labelVisibilityMode="labeled"/>
 
     <TextView
+        android:id="@+id/results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:text="Result:"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        />
+
+    <TextView
         android:id="@+id/instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:layout_toRightOf="@+id/results"
+        android:layout_marginLeft="10dp"
+        android:text=""
+        android:textSize="35dp"
+        android:textColor="@color/black"
         android:textAlignment="center"
+
         />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/results"
+        android:background="#87ceeb"
+        />
 
+    <TextView
+        android:id="@+id/firstStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:text=""
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/results"
+        />
 
+    <TextView
+        android:id="@+id/subFirstStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:layout_below="@id/firstStep"
+        />
 
+    <TextView
+        android:id="@+id/secondStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:text=""
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/subFirstStep"
+        />
+
+    <TextView
+    android:id="@+id/subSecondStep"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="15dp"
+    android:text=""
+    android:textColor="@color/black"
+    android:layout_below="@id/secondStep"
+    />
+
+    <TextView
+        android:id="@+id/thirdStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:text=""
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/subSecondStep"
+        />
+
+    <TextView
+    android:id="@+id/subThirdStep"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="15dp"
+    android:text=""
+    android:textColor="@color/black"
+    android:layout_below="@id/thirdStep"
+    />
+
+    <TextView
+        android:id="@+id/fourthStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:text=""
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/subThirdStep"
+        />
+
+    <TextView
+        android:id="@+id/subFourthStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:layout_below="@id/fourthStep"
+        />
 </RelativeLayout>

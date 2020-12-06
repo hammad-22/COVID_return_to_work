@@ -1,6 +1,7 @@
 package com.example.covidreturntowork
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_home
         bottomNavigationView.setOnNavigationItemSelectedListener{
             when(it.itemId) {
                 R.id.navigation_home -> {
@@ -36,9 +38,10 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-
+            overridePendingTransition(0,0)
             true
         }
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 

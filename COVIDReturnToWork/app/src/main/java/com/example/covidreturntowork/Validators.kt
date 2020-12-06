@@ -17,8 +17,7 @@ class Validators {
         return emailRegex.matches(email)
     }
 
-    // TODO: Validate password
-    // Passwords should be at least 4 characters with 1 letter and 1 number
+       // Passwords should contain at least 1 letter,1 number, and one special character
     fun validPassword(password: String?) : Boolean {
         if (password.isNullOrEmpty()) {
             return false

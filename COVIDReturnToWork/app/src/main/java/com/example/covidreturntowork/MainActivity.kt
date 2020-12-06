@@ -1,6 +1,7 @@
 package com.example.covidreturntowork
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
         }
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
     }
 
     private fun initializeViews() {

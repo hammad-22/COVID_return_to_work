@@ -198,5 +198,7 @@ class WTDFragment : AppCompatActivity() {
 
        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
+       requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
     }
 }

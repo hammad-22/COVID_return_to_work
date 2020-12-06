@@ -50,8 +50,8 @@ class CheckinFragment : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_checkIn
-        bottomNavigationView.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
+        bottomNavigationView.setOnNavigationItemSelectedListener{
+            when(it.itemId) {
                 R.id.navigation_home -> {
                     val intent = Intent(this, HomeFragment::class.java)
                     startActivity(intent)
@@ -69,13 +69,9 @@ class CheckinFragment : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-            overridePendingTransition(0, 0)
+            overridePendingTransition(0,0)
             true
         }
-
-        var count = 0
-
-        buttonSubmit = findViewById(R.id.submitButton)
 
         checkBox1 = findViewById(R.id.checkBox1)
         checkBox2 = findViewById(R.id.checkBox2)
@@ -85,34 +81,52 @@ class CheckinFragment : AppCompatActivity() {
         checkBox6 = findViewById(R.id.checkBox6)
         checkBox7 = findViewById(R.id.checkBox7)
 
-        buttonSubmit.setOnClickListener {
-            if (checkBox1.isChecked)
-                count += 1
-            if (checkBox2.isChecked)
-                count += 1
-            if (checkBox3.isChecked)
-                count += 1
-            if (checkBox4.isChecked)
-                count += 1
-            if (checkBox5.isChecked)
-                count += 1
-            if (checkBox6.isChecked)
-                count += 1
-            if (checkBox7.isChecked)
-                count += 1
+        buttonSubmit = findViewById(R.id.submitButton)
+        buttonSubmit.setOnClickListener { addResult() }
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-            submit(count)
-            buttonSubmit = findViewById(R.id.submitButton)
-            buttonSubmit.setOnClickListener { addResult() }
-            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    }
 
+    private fun findResult():String{
+        var count = 0
+        if(checkBox1.isChecked){
+            count += 3
         }
+        if(checkBox2.isChecked){
+            count += 10
+        }
+        if(checkBox3.isChecked){
+            count += 10
+        }
+        if(checkBox4.isChecked){
+            count += 2
+        }
+        if(checkBox5.isChecked){
+            count += 10
+        }
+        if(checkBox6.isChecked){
+            count += 1
+        }
+        if(checkBox1.isChecked){
+            count += 2
+        }
+        var toReturn: String
+
+
+        if(count == 0){
+            toReturn = mResult[0]
+        } else if(count in 1..5){
+            toReturn = mResult[1]
+        } else {
+            toReturn = mResult[2]
+        }
+        return toReturn
     }
 
     // Add result to database
     private fun addResult() {
         //TODO change result to real function that call result
-        val result = mResult[0]
+        val result = findResult()
         val id = mUserReference!!.push().key
         if (id != null) {
             val date = getCurrentDateTime()
@@ -122,6 +136,11 @@ class CheckinFragment : AppCompatActivity() {
             Toast.makeText(this, "Result Added", Toast.LENGTH_LONG)
 
         }
+
+        val intent = Intent(this, WTDFragment::class.java)
+        intent.putExtra("Result", result)
+        startActivity(intent)
+        overridePendingTransition(0,0)
     }
 
     fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
@@ -132,11 +151,4 @@ class CheckinFragment : AppCompatActivity() {
     fun getCurrentDateTime(): Date {
         return Calendar.getInstance().time
     }
-
-    fun submit(result: Int){
-
-    }
 }
-
-/**/
-/**/

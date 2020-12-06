@@ -21,10 +21,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Please check the boxes below based on the symptoms you're experiencing:"
         android:textSize="20dp"
         android:textAlignment="center"
         />
+
 
 
 

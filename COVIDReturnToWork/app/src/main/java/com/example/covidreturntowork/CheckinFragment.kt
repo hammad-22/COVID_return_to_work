@@ -137,7 +137,9 @@ class CheckinFragment : AppCompatActivity() {
         val result = findResult()
         val id = mUserReference!!.push().key
         if (id != null) {
-            val date = getCurrentDateTime()
+            //get current system date
+            val date = Calendar.getInstance().time
+            //create formatted pattern and convert date to string
             val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")
             val user = User(dateInString, result)
             mUserReference!!.child(id).setValue(user)
@@ -153,13 +155,7 @@ class CheckinFragment : AppCompatActivity() {
 
     //convert system date to string
     fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
-        val formatter = SimpleDateFormat(format, locale)
-        return formatter.format(this)
+        val fm = SimpleDateFormat(format, locale)
+        return fm.format(this)
     }
-
-    //get current system date
-    fun getCurrentDateTime(): Date {
-        return Calendar.getInstance().time
-    }
-
 }

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
+//this class is modified and based on the Firebase lab in CMSC436 fall 2020
 class RegistrationActivity : AppCompatActivity() {
 
     private var emailTV: EditText? = null

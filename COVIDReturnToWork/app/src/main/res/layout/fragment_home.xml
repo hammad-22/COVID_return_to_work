@@ -12,6 +12,7 @@
 
     <TextView
         android:id="@+id/state"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -58,7 +59,7 @@
         android:id="@+id/country"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
-
+        android:textStyle="bold"
         android:layout_below="@+id/textView3"
         android:layout_marginTop="130dp"
         android:gravity="center"

@@ -118,6 +118,8 @@ class HomeFragment : Fragment() {
         val countryCondition = inf!!.findViewById<TextView>(R.id.countryNew)
         val countryDeath = inf!!.findViewById<TextView>(R.id.countryDeath)
         val stateLink = inf!!.findViewById<TextView>(R.id.stateLink)
+        val countryLink = inf!!.findViewById<TextView>(R.id.countryLink)
+        val countryOrder = inf!!.findViewById<TextView>(R.id.countryOrder)
         var stateName = "Maryland"
 
         val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -167,8 +169,10 @@ class HomeFragment : Fragment() {
                 println(states[stateName])
                 var responseST = URL("https://api.covidtracking.com/v1/states/current.json").readText()
                 var responseUS = URL("https://api.covidtracking.com/v1/us/current.json").readText()
+                var responseMETA = URL("https://api.covidtracking.com/v1/states/info.json").readText()
                 var gsonst = Gson()
                 var gsonus = Gson()
+
 
                 val dataST = gsonst.fromJson(
                     responseST,
@@ -179,21 +183,30 @@ class HomeFragment : Fragment() {
                     responseUS,
                     Array<com.example.covidreturntowork.jsonresponse.Response>::class.java
                 )
+                val meta = gsonus.fromJson(
+                    responseMETA,
+                    Array<com.example.covidreturntowork.jsonresponse.ResponseMeta>::class.java
+                )
 
                 for(x in 0 until dataUS.size) {
                     countryCondition.setText("" + dataUS[x].positiveIncrease + " new cases")
                     countryDeath.setText("" + dataUS[x].deathIncrease + " new deaths")
+                    if(dataUS[x].positiveIncrease!! > 0) {
+                        countryOrder.setText("Unsafe \uD83D\uDE37")
+                    }
 
                 }
 
                 for(x in 0 until dataST.size) {
                     if(dataST[x].state == states[stateName]) {
-                        //stateLink.setText(Html.fromHtml("<a href=\"http://www.google.com\">Google</a>"))
+
                         textView2.setText("" + dataST[x].positiveIncrease + " new cases")
                         textView3.setText("" + dataST[x].deathIncrease + " new deaths")
                         if(dataST[x].positiveIncrease!! > 0) {
                             stateCondition.setText("Unsafe \uD83D\uDE37")
                         }
+                        stateLink.setText( Html.fromHtml("<a href="+meta[x].covid19Site +">More State Info</a>"))
+
 
                     }
 
@@ -203,10 +216,11 @@ class HomeFragment : Fragment() {
             }
         }
 
-        thread.start()
+        countryLink.setText(Html.fromHtml("<a href=https://www.cdc.gov/coronavirus/2019-ncov/index.html>CDC Info</a>"))
+        stateLink.setMovementMethod(LinkMovementMethod.getInstance())
+        countryLink.setMovementMethod(LinkMovementMethod.getInstance())
 
-        textView2.setText( Html.fromHtml("<a href=\"http://www.google.com\">Google</a>"))
-        textView2.setMovementMethod(LinkMovementMethod.getInstance())
+        thread.start()
 
         return inf
     }

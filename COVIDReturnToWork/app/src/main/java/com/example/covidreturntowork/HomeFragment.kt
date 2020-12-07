@@ -141,6 +141,7 @@ class HomeFragment : AppCompatActivity() {
                 // Launching new Activity on selecting single List Item
                 val intent = Intent(this@HomeFragment, ItemFragment::class.java)
                 startActivity(intent)
+                overridePendingTransition(0,0)
             }
         })
 
@@ -222,13 +223,11 @@ class HomeFragment : AppCompatActivity() {
                             stateCondition.setText("Unsafe \uD83D\uDE37")
                         }
                         stateLink.setText(Html.fromHtml("<a href=" + meta[x].covid19Site + ">More State Info</a>"))
-
-
                     }
 
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
+                println("err")
             }
         }
 

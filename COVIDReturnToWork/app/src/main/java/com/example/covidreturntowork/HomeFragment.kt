@@ -25,6 +25,7 @@ import ir.farshid_roohi.linegraph.ChartEntity
 import ir.farshid_roohi.linegraph.LineChart
 import java.net.URL
 import java.util.*
+import kotlin.concurrent.schedule
 
 
 class HomeFragment : AppCompatActivity() {
@@ -233,8 +234,9 @@ class HomeFragment : AppCompatActivity() {
 
         stateLink.setMovementMethod(LinkMovementMethod.getInstance())
 
-        thread.start()
-
+        Timer("SettingUp", false).schedule(500) {
+            thread.start()
+        }
     }
 
     //onStart used for spinner since onCreate will have default data setup for Home page

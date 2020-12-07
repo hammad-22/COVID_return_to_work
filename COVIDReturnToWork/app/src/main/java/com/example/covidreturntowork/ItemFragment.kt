@@ -18,6 +18,7 @@ import ir.farshid_roohi.linegraph.LineChart
 import java.net.URL
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 
 
 /**
@@ -152,7 +153,10 @@ class ItemFragment : AppCompatActivity() {
 
         countryLink.setMovementMethod(LinkMovementMethod.getInstance())
 
-        thread.start()
+        Timer("SettingUp", false).schedule(500) {
+            thread.start()
+        }
+
 
     }
 }

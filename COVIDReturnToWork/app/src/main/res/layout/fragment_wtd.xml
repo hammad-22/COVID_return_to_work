@@ -38,15 +38,27 @@
         android:textSize="35dp"
         android:textColor="@color/black"
         android:textAlignment="center"
-
         />
 
+
     <View
+        android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@id/results"
         android:background="#87ceeb"
         />
+
+    <TextView
+        android:id="@+id/resultMT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="293dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <TextView
         android:id="@+id/firstStep"
@@ -57,7 +69,7 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
-        android:layout_below="@id/results"
+        android:layout_below="@id/view1"
         />
 
     <TextView

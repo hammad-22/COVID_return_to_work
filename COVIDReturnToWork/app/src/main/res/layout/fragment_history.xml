@@ -16,16 +16,41 @@
         android:background="?android:attr/windowBackground"
         app:labelVisibilityMode="labeled"/>
 
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check in History Log"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/textViewTitle"
+        android:background="#87ceeb"
+        />
+
     <ListView
         android:id="@+id/listViewResults"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view">
+    </ListView>
 
     <TextView
         android:id="@+id/textViewMT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="293dp"
         android:text="No record found. Please check in"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
 
 </RelativeLayout>

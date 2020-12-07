@@ -22,9 +22,11 @@ class WTDFragment : AppCompatActivity() {
     private lateinit var subThirdStep: TextView
     private lateinit var fourthStep: TextView
     private lateinit var subFourthStep: TextView
+    private lateinit var resultMT: TextView
 
 
-    private var defaultResult = "No Information Inputted"
+
+    private var defaultResult = "No Result"
 
     private val sharedPrefFile = "Result"
 
@@ -63,7 +65,7 @@ class WTDFragment : AppCompatActivity() {
 
 
         instructions = findViewById(R.id.instructions)
-
+        resultMT = findViewById(R.id.resultMT)
         firstStep = findViewById(R.id.firstStep)
         secondStep = findViewById(R.id.secondStep)
         thirdStep = findViewById(R.id.thirdStep)
@@ -72,10 +74,6 @@ class WTDFragment : AppCompatActivity() {
         subSecondStep = findViewById(R.id.subSecondStep)
         subThirdStep = findViewById(R.id.subThirdStep)
         subFourthStep = findViewById(R.id.subFourthStep)
-
-
-
-
 
         if(intent.getStringExtra("Result") != null) {
 
@@ -97,11 +95,10 @@ class WTDFragment : AppCompatActivity() {
                 updateInfo()
             } else {
                 instructions.text = defaultResult
-
+                instructions.setTextColor(Color.parseColor("#8A000000"))
+                resultMT.text = "No result found. Please check in in the \"Check In\" page to see result"
             }
         }
-
-
     }
 
     fun updateInfo(){
@@ -182,10 +179,6 @@ class WTDFragment : AppCompatActivity() {
         defaultResult = savedInstanceState.getString("Result").toString()
         instructions.text = defaultResult
         updateInfo()
-
-       requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
-       requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 

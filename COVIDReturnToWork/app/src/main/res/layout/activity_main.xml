@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:padding="16dp"
-        android:text="Please login/register to get more information about COVID and check your health against COVID symtomp" />
+        android:text="Please login/register to get more information about COVID and check your health against COVID symptoms" />
 
     <Button
         android:id="@+id/register"

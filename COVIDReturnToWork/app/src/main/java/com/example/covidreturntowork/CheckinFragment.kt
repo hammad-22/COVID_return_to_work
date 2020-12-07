@@ -22,7 +22,7 @@ class CheckinFragment : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
 
     private lateinit var buttonSubmit: Button
-    private val mResult = arrayListOf<String>("no symptoms", "quarantine", "critical")
+    private val mResult = arrayListOf<String>("No Symptoms", "Quarantine", "Critical")
 
     private lateinit var checkBox1: CheckBox
     private lateinit var checkBox2: CheckBox
@@ -102,7 +102,7 @@ class CheckinFragment : AppCompatActivity() {
         if(checkBox6.isChecked){
             count += 1
         }
-        if(checkBox1.isChecked){
+        if(checkBox7.isChecked){
             count += 2
         }
         var toReturn: String

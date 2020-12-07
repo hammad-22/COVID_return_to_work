@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/instructions"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Experiencing any irritation in your throat" />
 
     <CheckBox

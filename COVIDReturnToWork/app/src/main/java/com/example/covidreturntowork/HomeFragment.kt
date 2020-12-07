@@ -151,7 +151,7 @@ class HomeFragment : Fragment() {
                 return
             }
 
-            println("im in")
+
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location: Location? ->
                     latitude = location?.latitude!!

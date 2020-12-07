@@ -25,6 +25,7 @@ import ir.farshid_roohi.linegraph.ChartEntity
 import ir.farshid_roohi.linegraph.LineChart
 import java.net.URL
 import java.util.*
+import kotlin.concurrent.schedule
 
 
 class HomeFragment : AppCompatActivity() {
@@ -62,17 +63,14 @@ class HomeFragment : AppCompatActivity() {
         val states: MutableMap<String, String> = HashMap()
         states["Alabama"] = "AL"
         states["Alaska"] = "AK"
-        states["Alberta"] = "AB"
         states["Arizona"] = "AZ"
         states["Arkansas"] = "AR"
         states["California"] = "CA"
         states["Colorado"] = "CO"
         states["Connecticut"] = "CT"
         states["Delaware"] = "DE"
-        states["District Of Columbia"] = "DC"
         states["Florida"] = "FL"
         states["Georgia"] = "GA"
-        states["Guam"] = "GU"
         states["Hawaii"] = "HI"
         states["Idaho"] = "ID"
         states["Illinois"] = "IL"
@@ -82,7 +80,6 @@ class HomeFragment : AppCompatActivity() {
         states["Kentucky"] = "KY"
         states["Louisiana"] = "LA"
         states["Maine"] = "ME"
-        states["Manitoba"] = "MB"
         states["Maryland"] = "MD"
         states["Massachusetts"] = "MA"
         states["Michigan"] = "MI"
@@ -92,12 +89,10 @@ class HomeFragment : AppCompatActivity() {
         states["Montana"] = "MT"
         states["Nebraska"] = "NE"
         states["Nevada"] = "NV"
-        states["New Brunswick"] = "NB"
         states["New Hampshire"] = "NH"
         states["New Jersey"] = "NJ"
         states["New Mexico"] = "NM"
         states["New York"] = "NY"
-        states["Newfoundland"] = "NF"
         states["North Carolina"] = "NC"
         states["North Dakota"] = "ND"
         states["Ohio"] = "OH"
@@ -116,62 +111,6 @@ class HomeFragment : AppCompatActivity() {
         states["West Virginia"] = "WV"
         states["Wisconsin"] = "WI"
         states["Wyoming"] = "WY"
-
-        val keyList = arrayListOf<String>(
-            "Alabama",
-            "Alaska",
-            "Arizona",
-            "Arkansas",
-            "California",
-            "Colorado",
-            "Connecticut",
-            "Delaware",
-            "Florida",
-            "Georgia",
-            "Hawaii",
-            "Idaho",
-            "Illinois",
-            "Indiana",
-            "Iowa",
-            "Kansas",
-            "Kentucky",
-            "Louisiana",
-            "Maine",
-            "Maryland",
-            "Massachusetts",
-            "Michigan",
-            "Minnesota",
-            "Mississippi",
-            "Missouri",
-            "Montana",
-            "Nebraska",
-            "Nevada",
-            "New Hampshire",
-            "New Jersey",
-            "New Mexico",
-            "New York",
-            "North Carolina",
-            "North Dakota",
-            "Ohio",
-            "Oklahoma",
-            "Oregon",
-            "Pennsylvania",
-            "Rhode Island",
-            "South Carolina",
-            "South Dakota",
-            "Tennessee",
-            "Texas",
-            "Utah",
-            "Vermont",
-            "Virginia",
-            "Washington",
-            "West Virginia",
-            "Wisconsin",
-            "Wyoming"
-        )
-
-        var latitude = 0.0
-        var longitude = 0.0
 
         val textView2 = findViewById<TextView>(R.id.textView2)
         val textView3 = findViewById<TextView>(R.id.textView3)
@@ -193,14 +132,11 @@ class HomeFragment : AppCompatActivity() {
         val mySpinner = findViewById<Spinner>(R.id.states_spinner)
 
 
-
         var stateName = "Maryland"
 
-        val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
-        this?.let { ActivityCompat.requestPermissions(it, permissions, 0) }
+        val aboutBtn: Button = findViewById(R.id.button) as Button
 
-        val aboutBtn: Button = findViewById<Button>(R.id.button)
-
+        //goes to page for national data
         aboutBtn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 // Launching new Activity on selecting single List Item
@@ -210,6 +146,7 @@ class HomeFragment : AppCompatActivity() {
             }
         })
 
+        //sets default value for spinner
         val compareValue = stateName
         val adapter = ArrayAdapter.createFromResource(
             this,
@@ -223,6 +160,7 @@ class HomeFragment : AppCompatActivity() {
             mySpinner.setSelection(spinnerPosition)
         }
 
+        //this thread gets all the JSON data and fills up the page
         val thread = Thread {
             try {
                 var dateState = URL("https://api.covidtracking.com/v1/states/" + states[stateName] + "/daily.json").readText()
@@ -244,6 +182,7 @@ class HomeFragment : AppCompatActivity() {
                     responseMETA,
                     Array<com.example.covidreturntowork.jsonresponse.ResponseMeta>::class.java
                 )
+                //adds in data for past week of cases
                 val list: MutableList<Float> = ArrayList()
                 val listDates: MutableList<String> = ArrayList()
                 for(x in 0 until 7) {
@@ -254,6 +193,8 @@ class HomeFragment : AppCompatActivity() {
                     listDates.add(s)
                 }
 
+                //this makes the graph
+                //Graph library was available online for use
                 val lineChart: LineChart = findViewById<LineChart>(R.id.lineChart)
 
                 list.reverse()
@@ -274,6 +215,7 @@ class HomeFragment : AppCompatActivity() {
                 }
                 lineChart.setLegend(listDate)
 
+                //this adds in the data for each state
                 for(x in 0 until dataST.size) {
                     if(dataST[x].state == states[stateName]) {
                         textView2.setText("" + dataST[x].positiveIncrease + " new cases")
@@ -292,10 +234,12 @@ class HomeFragment : AppCompatActivity() {
 
         stateLink.setMovementMethod(LinkMovementMethod.getInstance())
 
-        thread.start()
-
+        Timer("SettingUp", false).schedule(500) {
+            thread.start()
+        }
     }
 
+    //onStart used for spinner since onCreate will have default data setup for Home page
     override fun onStart() {
         super.onStart()
 
@@ -356,6 +300,7 @@ class HomeFragment : AppCompatActivity() {
         val stateCondition = findViewById<TextView>(R.id.stateOrder)
         val stateLink = findViewById<TextView>(R.id.stateLink)
 
+        //Helps change data and pulls in new data for different state selected from spinner
         var spinner = findViewById<Spinner>(R.id.states_spinner)
         spinner.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(
@@ -434,9 +379,12 @@ class HomeFragment : AppCompatActivity() {
                     }
                 }
 
+                //Creates link
                 stateLink.setMovementMethod(LinkMovementMethod.getInstance())
 
-                thread.start()
+                Timer("SettingUp", false).schedule(500) {
+                    thread.start()
+                }
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {

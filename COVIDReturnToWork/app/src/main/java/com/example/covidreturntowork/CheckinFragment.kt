@@ -31,6 +31,7 @@ class CheckinFragment : AppCompatActivity() {
     private lateinit var checkBox5: CheckBox
     private lateinit var checkBox6: CheckBox
     private lateinit var checkBox7: CheckBox
+    private lateinit var checkBox8: CheckBox
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +76,7 @@ class CheckinFragment : AppCompatActivity() {
         checkBox5 = findViewById(R.id.checkBox5)
         checkBox6 = findViewById(R.id.checkBox6)
         checkBox7 = findViewById(R.id.checkBox7)
+        checkBox8 = findViewById(R.id.checkBox8)
 
         buttonSubmit = findViewById(R.id.submitButton)
         buttonSubmit.setOnClickListener { addResult() }
@@ -104,6 +106,9 @@ class CheckinFragment : AppCompatActivity() {
         }
         if(checkBox7.isChecked){
             count += 2
+        }
+        if(checkBox8.isChecked){
+            count += 4
         }
         var toReturn: String
 

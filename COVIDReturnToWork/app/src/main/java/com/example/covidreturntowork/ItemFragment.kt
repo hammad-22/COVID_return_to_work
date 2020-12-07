@@ -18,6 +18,7 @@ import ir.farshid_roohi.linegraph.LineChart
 import java.net.URL
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 
 
 /**
@@ -79,6 +80,7 @@ class ItemFragment : AppCompatActivity() {
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
+        //Thread gets national JSON data
         val thread = Thread {
             try {
                 var dateState = URL("https://api.covidtracking.com/v1/us/daily.json").readText()
@@ -97,6 +99,7 @@ class ItemFragment : AppCompatActivity() {
                     Array<com.example.covidreturntowork.jsonresponse.Response>::class.java
                 )
 
+                //Adds in data for past week of cases nationally
                 val list: MutableList<Float> = java.util.ArrayList()
                 val listDates: MutableList<String> = java.util.ArrayList()
                 for(x in 0 until 7) {
@@ -107,6 +110,8 @@ class ItemFragment : AppCompatActivity() {
                     listDates.add(s)
                 }
 
+                //makes the line graph
+                //Used a library from online but still add coded to it myself for my custom graph
                 val lineChart: LineChart = findViewById<LineChart>(R.id.lineChart)
 
                 list.reverse()
@@ -127,6 +132,7 @@ class ItemFragment : AppCompatActivity() {
                 }
                 lineChart.setLegend(listDate)
 
+                //Adds in JSON data for each case nationally
                 for(x in 0 until dataUS.size) {
                     countryCondition.setText("" + dataUS[x].positiveIncrease + " new cases")
                     countryDeath.setText("" + dataUS[x].deathIncrease + " new deaths")
@@ -142,11 +148,15 @@ class ItemFragment : AppCompatActivity() {
             }
         }
 
+        //Creates link
         countryLink.setText(Html.fromHtml("<a href=https://www.cdc.gov/coronavirus/2019-ncov/index.html>CDC Info</a>"))
 
         countryLink.setMovementMethod(LinkMovementMethod.getInstance())
 
-        thread.start()
+        Timer("SettingUp", false).schedule(500) {
+            thread.start()
+        }
+
 
     }
 }

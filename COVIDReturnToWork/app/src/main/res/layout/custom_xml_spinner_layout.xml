@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--made this custom xml file for custom spinner-->
 <TextView android:id="@+id/state"
     android:textStyle="bold"
     android:layout_width="match_parent"

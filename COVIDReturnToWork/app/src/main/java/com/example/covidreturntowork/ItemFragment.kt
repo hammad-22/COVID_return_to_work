@@ -96,7 +96,7 @@ class ItemFragment : AppCompatActivity() {
         aboutBtn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 // Launching new Activity on selecting single List Item
-                val intent = Intent(this@ItemFragment, ItemFragment::class.java)
+                val intent = Intent(this@ItemFragment, HomeFragment::class.java)
                 startActivity(intent)
             }
         })

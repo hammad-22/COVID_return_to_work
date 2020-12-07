@@ -8,12 +8,16 @@
     android:padding="16dp"
     tools:context=".HomeFragment">
 
-<TextView
+
+
+    <TextView
+        android:id="@+id/state"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-7dp"
         android:gravity="center"
-        android:text="General Statistics"
+        android:text="state"
         android:textColor="@color/black"
         android:textSize="30sp" />
 
@@ -21,9 +25,100 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="45dp"
         android:gravity="center"
-        android:text="Daily New Cases"
+        android:text="State Positive Increase"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="19dp"
+        android:gravity="center"
+        android:text="State Death Increase"
+        android:textColor="#E1341E"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/stateOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="72dp"
+        android:gravity="center"
+        android:text="Unsafe"
+        android:textColor="#a7a11b"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="130dp"
+        android:gravity="center"
+        android:text="United States Daily Change"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/countryNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="318dp"
+        android:gravity="center"
+        android:text="Country Positive Increase"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/countryDeath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="371dp"
+        android:gravity="center"
+        android:text="Country Death Increase"
+        android:textColor="#E1341E"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/stateLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="201dp"
+        android:gravity="center"
+        android:text="link"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/countryLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="479dp"
+        android:gravity="center"
+        android:text="link"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/countryOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="348dp"
+        android:gravity="center"
+        android:text="Unsafe"
+        android:textColor="#a7a11b"
         android:textSize="25sp" />
 
 

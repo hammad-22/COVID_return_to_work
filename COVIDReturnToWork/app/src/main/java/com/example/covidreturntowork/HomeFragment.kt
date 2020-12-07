@@ -415,7 +415,7 @@ class HomeFragment : AppCompatActivity() {
                         lineChart.setLegend(listDate)
 
                         for(x in 0 until dataST.size) {
-                            if(dataST[x].state == keyList[position]) {
+                            if(dataST[x].state == key) {
                                 textView2.setText("" + dataST[x].positiveIncrease + " new cases")
                                 textView3.setText("" + dataST[x].deathIncrease + " new deaths")
                                 if(dataST[x].positiveIncrease!! > 0) {

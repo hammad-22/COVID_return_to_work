@@ -67,7 +67,7 @@ class HistoryFragment : AppCompatActivity() {
             true
         }
 
-        //taking the snapshot of database values and add it to the result array
+        //taking the snapshot of each database child value and add it to the result array
         //update adapter and listview
         mUserReference!!.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {

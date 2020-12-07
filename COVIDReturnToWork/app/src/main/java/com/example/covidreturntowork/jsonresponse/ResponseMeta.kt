@@ -2,6 +2,7 @@ package com.example.covidreturntowork.jsonresponse
 
 import com.google.gson.annotations.SerializedName
 
+//This helps receive meta data for each state
 data class ResponseMeta(
 
 	@field:SerializedName("covid19SiteQuinary")

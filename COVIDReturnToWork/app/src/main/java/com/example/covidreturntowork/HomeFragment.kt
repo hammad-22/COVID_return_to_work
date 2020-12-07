@@ -192,6 +192,7 @@ class HomeFragment : AppCompatActivity() {
                 }
 
                 //this makes the graph
+                //Graph library was available online for use
                 val lineChart: LineChart = findViewById<LineChart>(R.id.lineChart)
 
                 list.reverse()
@@ -237,6 +238,7 @@ class HomeFragment : AppCompatActivity() {
 
     }
 
+    //onStart used for spinner since onCreate will have default data setup for Home page
     override fun onStart() {
         super.onStart()
 
@@ -376,6 +378,7 @@ class HomeFragment : AppCompatActivity() {
                     }
                 }
 
+                //Creates link
                 stateLink.setMovementMethod(LinkMovementMethod.getInstance())
 
                 thread.start()

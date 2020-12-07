@@ -1,7 +1,7 @@
 package com.example.covidreturntowork.jsonresponse
 
 import com.google.gson.annotations.SerializedName
-
+//This code helps retrieve National JSON data
 data class Response(
 
 	@field:SerializedName("date")

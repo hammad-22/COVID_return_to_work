@@ -282,13 +282,11 @@ class HomeFragment : AppCompatActivity() {
                             stateCondition.setText("Unsafe \uD83D\uDE37")
                         }
                         stateLink.setText(Html.fromHtml("<a href=" + meta[x].covid19Site + ">More State Info</a>"))
-
-
                     }
 
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
+                println("err")
             }
         }
 

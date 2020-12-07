@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/instructions"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Experiencing any irritation in your throat" />
 
     <CheckBox
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/checkBox1"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Experiencing a lost of smell and/or taste" />
 
     <CheckBox
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/checkBox2"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Experiencing shortness of breath or having difficulty breathing" />
 
     <CheckBox
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/checkBox3"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Have a fever or feel hot" />
     <CheckBox
         android:id="@+id/checkBox5"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/checkBox4"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Experiencing severe chest pain" />
     <CheckBox
         android:id="@+id/checkBox6"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/checkBox5"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Having a hard time waking up?" />
     <CheckBox
         android:id="@+id/checkBox7"
@@ -80,8 +80,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/checkBox6"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Have a runny nose" />
+
+    <CheckBox
+        android:id="@+id/checkBox8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkBox7"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="15dp"
+        android:text="Had contact with someone sick" />
 
     <Button
         android:id="@+id/submitButton"

@@ -192,6 +192,7 @@ class HomeFragment : AppCompatActivity() {
                 }
 
                 //this makes the graph
+                //Graph library was available online for use
                 val lineChart: LineChart = findViewById<LineChart>(R.id.lineChart)
 
                 list.reverse()
@@ -376,6 +377,7 @@ class HomeFragment : AppCompatActivity() {
                     }
                 }
 
+                //Creates link
                 stateLink.setMovementMethod(LinkMovementMethod.getInstance())
 
                 thread.start()

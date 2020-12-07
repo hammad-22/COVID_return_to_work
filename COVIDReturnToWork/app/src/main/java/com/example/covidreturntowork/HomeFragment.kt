@@ -238,6 +238,7 @@ class HomeFragment : AppCompatActivity() {
 
     }
 
+    //onStart used for spinner since onCreate will have default data setup for Home page
     override fun onStart() {
         super.onStart()
 

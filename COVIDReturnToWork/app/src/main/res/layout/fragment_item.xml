@@ -37,7 +37,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="-7dp"
         android:gravity="center"
-        android:text="US Daily Change"
+        android:text="United States"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />

@@ -1,32 +1,30 @@
 package com.example.covidreturntowork
 
-import android.app.Activity
-import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
+import ir.farshid_roohi.linegraph.ChartEntity
+import ir.farshid_roohi.linegraph.LineChart
 import java.net.URL
 import java.util.*
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -55,7 +53,7 @@ class HomeFragment : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-            overridePendingTransition(0,0)
+            overridePendingTransition(0, 0)
             true
         }
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -150,6 +148,17 @@ class HomeFragment : AppCompatActivity() {
         val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
         this?.let { ActivityCompat.requestPermissions(it, permissions, 0) }
 
+        val aboutBtn: Button = findViewById(R.id.button) as Button
+
+        aboutBtn.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                // Launching new Activity on selecting single List Item
+                val intent = Intent(this@HomeFragment, ItemFragment::class.java)
+                startActivity(intent)
+            }
+        })
+
+
         fusedLocationClient = this?.let { LocationServices.getFusedLocationProviderClient(it) }!!
 
 
@@ -186,43 +195,63 @@ class HomeFragment : AppCompatActivity() {
                     val geocoder = Geocoder(this, Locale.getDefault())
                     val addresses: List<Address> = geocoder.getFromLocation(latitude, longitude, 1)
                     stateName = addresses[0].adminArea
-                    state.setText(stateName+ " Daily Change")
+                    state.setText(stateName + " Daily Change")
                 }
         }
         obtieneLocalizacion()
 
         val thread = Thread {
             try {
-                println(states[stateName])
+                var dateState = URL("https://api.covidtracking.com/v1/states/"+states[stateName]+"/daily.json").readText()
                 var responseST = URL("https://api.covidtracking.com/v1/states/current.json").readText()
-                var responseUS = URL("https://api.covidtracking.com/v1/us/current.json").readText()
                 var responseMETA = URL("https://api.covidtracking.com/v1/states/info.json").readText()
                 var gsonst = Gson()
                 var gsonus = Gson()
 
-
+                val dataDate = gsonst.fromJson(
+                    dateState,
+                    Array<com.example.covidreturntowork.jsonresponse.ResponseDateState>::class.java
+                )
                 val dataST = gsonst.fromJson(
                     responseST,
                     Array<com.example.covidreturntowork.jsonresponse.ResponseState>::class.java
                 )
 
-                val dataUS = gsonus.fromJson(
-                    responseUS,
-                    Array<com.example.covidreturntowork.jsonresponse.Response>::class.java
-                )
                 val meta = gsonus.fromJson(
                     responseMETA,
                     Array<com.example.covidreturntowork.jsonresponse.ResponseMeta>::class.java
                 )
+                val list: MutableList<Float> = ArrayList()
+                val listDates: MutableList<String> = ArrayList()
+                for(x in 0 until 7) {
+                    list.add(dataDate[x].positiveIncrease!!.toFloat())
+                    var s = dataDate[x].date!!.toString()
+                    s = s.substring(4)
+                    s = s.substring(0,2) + "-" + s.substring(2)
+                    listDates.add(s)
+                }
 
-                for(x in 0 until dataUS.size) {
-                    countryCondition.setText("" + dataUS[x].positiveIncrease + " new cases")
-                    countryDeath.setText("" + dataUS[x].deathIncrease + " new deaths")
-                    if(dataUS[x].positiveIncrease!! > 0) {
-                        countryOrder.setText("Unsafe \uD83D\uDE37")
-                    }
+                val lineChart: LineChart = findViewById<LineChart>(R.id.lineChart)
+
+                list.reverse()
+                listDates.reverse()
+                val firstChartEntity = ChartEntity(Color.WHITE, list.toFloatArray())
+
+
+                val list2 = ArrayList<ChartEntity>().apply {
+                    add(firstChartEntity)
 
                 }
+
+                lineChart.setList(list2)
+
+                val listDate: MutableList<String> = ArrayList()
+                for (text in listDates) {
+                    listDate.add(text)
+                }
+                lineChart.setLegend(listDate)
+
+
 
                 for(x in 0 until dataST.size) {
                     if(dataST[x].state == states[stateName]) {
@@ -232,7 +261,7 @@ class HomeFragment : AppCompatActivity() {
                         if(dataST[x].positiveIncrease!! > 0) {
                             stateCondition.setText("Unsafe \uD83D\uDE37")
                         }
-                        stateLink.setText( Html.fromHtml("<a href="+meta[x].covid19Site +">More State Info</a>"))
+                        stateLink.setText(Html.fromHtml("<a href=" + meta[x].covid19Site + ">More State Info</a>"))
 
 
                     }
@@ -243,9 +272,7 @@ class HomeFragment : AppCompatActivity() {
             }
         }
 
-        countryLink.setText(Html.fromHtml("<a href=https://www.cdc.gov/coronavirus/2019-ncov/index.html>CDC Info</a>"))
         stateLink.setMovementMethod(LinkMovementMethod.getInstance())
-        countryLink.setMovementMethod(LinkMovementMethod.getInstance())
 
         thread.start()
 

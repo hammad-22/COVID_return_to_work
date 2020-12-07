@@ -21,6 +21,7 @@
         <activity android:name=".HistoryFragment" />
         <activity android:name=".HomeFragment" />
         <activity android:name=".CheckinFragment" />
+        <activity android:name=".ItemFragment"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

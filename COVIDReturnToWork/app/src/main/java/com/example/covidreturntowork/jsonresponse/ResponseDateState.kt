@@ -2,6 +2,7 @@ package com.example.covidreturntowork.jsonresponse
 
 import com.google.gson.annotations.SerializedName
 
+//this code helps receive JSON data for past week for states
 data class ResponseDateState(
 
 	@field:SerializedName("date")

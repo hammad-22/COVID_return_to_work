@@ -199,13 +199,14 @@ class HomeFragment : AppCompatActivity() {
         val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
         this?.let { ActivityCompat.requestPermissions(it, permissions, 0) }
 
-        val aboutBtn: Button = findViewById(R.id.button) as Button
+        val aboutBtn: Button = findViewById<Button>(R.id.button)
 
         aboutBtn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 // Launching new Activity on selecting single List Item
                 val intent = Intent(this@HomeFragment, ItemFragment::class.java)
                 startActivity(intent)
+                overridePendingTransition(0,0)
             }
         })
 

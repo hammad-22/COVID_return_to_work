@@ -45,6 +45,7 @@ class ItemFragment : AppCompatActivity() {
                 // Launching new Activity on selecting single List Item
                 val intent = Intent(this@ItemFragment, HomeFragment::class.java)
                 startActivity(intent)
+                overridePendingTransition(0,0)
             }
         })
 

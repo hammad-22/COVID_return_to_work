@@ -12,4 +12,5 @@
     <string name="title_history">History</string>
     <string name="title_what_to_do">What To Do</string>
     <string name="title_logout">Logout</string>
+    <string name="more_info"><a href = "">More State Info</a></string>
 </resources>

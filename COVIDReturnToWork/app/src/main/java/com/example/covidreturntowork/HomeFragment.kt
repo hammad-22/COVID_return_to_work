@@ -286,6 +286,59 @@ class HomeFragment : AppCompatActivity() {
         states["Wisconsin"] = "WI"
         states["Wyoming"] = "WY"
 
+        val keyList = arrayListOf<String>(
+            "Alabama",
+            "Alaska",
+            "Arizona",
+            "Arkansas",
+            "California",
+            "Colorado",
+            "Connecticut",
+            "Delaware",
+            "Florida",
+            "Georgia",
+            "Hawaii",
+            "Idaho",
+            "Illinois",
+            "Indiana",
+            "Iowa",
+            "Kansas",
+            "Kentucky",
+            "Louisiana",
+            "Maine",
+            "Maryland",
+            "Massachusetts",
+            "Michigan",
+            "Minnesota",
+            "Mississippi",
+            "Missouri",
+            "Montana",
+            "Nebraska",
+            "Nevada",
+            "New Hampshire",
+            "New Jersey",
+            "New Mexico",
+            "New York",
+            "North Carolina",
+            "North Dakota",
+            "Ohio",
+            "Oklahoma",
+            "Oregon",
+            "Pennsylvania",
+            "Rhode Island",
+            "South Carolina",
+            "South Dakota",
+            "Tennessee",
+            "Texas",
+            "Utah",
+            "Vermont",
+            "Virginia",
+            "Washington",
+            "West Virginia",
+            "Wisconsin",
+            "Wyoming"
+        )
+
         val textView2 = findViewById<TextView>(R.id.textView2)
         val textView3 = findViewById<TextView>(R.id.textView3)
         val stateCondition = findViewById<TextView>(R.id.stateOrder)
@@ -301,10 +354,9 @@ class HomeFragment : AppCompatActivity() {
                 id: Long
             ) {
                 val thread = Thread {
+                    var key = states[keyList.get(position)]
                     try {
-                        val keyList = ArrayList(states.values)
-                        keyList.sort()
-                        var dateState = URL("https://api.covidtracking.com/v1/states/" + keyList[position] + "/daily.json").readText()
+                        var dateState = URL("https://api.covidtracking.com/v1/states/" + key + "/daily.json").readText()
                         var responseST = URL("https://api.covidtracking.com/v1/states/current.json").readText()
                         var responseMETA = URL("https://api.covidtracking.com/v1/states/info.json").readText()
                         var gsonst = Gson()
@@ -354,7 +406,7 @@ class HomeFragment : AppCompatActivity() {
                         lineChart.setLegend(listDate)
 
                         for(x in 0 until dataST.size) {
-                            if(dataST[x].state == keyList[position]) {
+                            if(dataST[x].state == key) {
                                 textView2.setText("" + dataST[x].positiveIncrease + " new cases")
                                 textView3.setText("" + dataST[x].deathIncrease + " new deaths")
                                 if(dataST[x].positiveIncrease!! > 0) {

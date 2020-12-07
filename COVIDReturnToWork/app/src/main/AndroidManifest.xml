@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.COVIDReturnToWork">
-        <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".LogoutFragment" />
         <activity android:name=".RegistrationActivity" />

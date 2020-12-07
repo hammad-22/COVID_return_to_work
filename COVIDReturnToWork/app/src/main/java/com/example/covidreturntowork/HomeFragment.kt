@@ -382,7 +382,9 @@ class HomeFragment : AppCompatActivity() {
                 //Creates link
                 stateLink.setMovementMethod(LinkMovementMethod.getInstance())
 
-                thread.start()
+                Timer("SettingUp", false).schedule(500) {
+                    thread.start()
+                }
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {

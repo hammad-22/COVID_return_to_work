@@ -363,7 +363,7 @@ class HomeFragment : AppCompatActivity() {
                 id: Long
             ) {
                 val thread = Thread {
-                    var key = states[keyList[position]]
+                    var key = states[keyList.get(position)]
                     try {
                         var dateState = URL("https://api.covidtracking.com/v1/states/" + key + "/daily.json").readText()
                         var responseST = URL("https://api.covidtracking.com/v1/states/current.json").readText()

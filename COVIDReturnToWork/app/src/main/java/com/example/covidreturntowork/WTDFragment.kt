@@ -30,6 +30,7 @@ class WTDFragment : AppCompatActivity() {
 
     private val sharedPrefFile = "Result"
 
+    // Called when app is first created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_wtd)
@@ -59,11 +60,12 @@ class WTDFragment : AppCompatActivity() {
             true
         }
 
+        // Initializes sharedPreferences when app is created
         val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-
+        // Gets references to different views
         instructions = findViewById(R.id.instructions)
         resultMT = findViewById(R.id.resultMT)
         firstStep = findViewById(R.id.firstStep)
@@ -75,6 +77,7 @@ class WTDFragment : AppCompatActivity() {
         subThirdStep = findViewById(R.id.subThirdStep)
         subFourthStep = findViewById(R.id.subFourthStep)
 
+        // Retrieves the result if this activity was started by the check-in Activity
         if(intent.getStringExtra("Result") != null) {
 
             mResult = intent.getStringExtra("Result").toString()
@@ -82,17 +85,21 @@ class WTDFragment : AppCompatActivity() {
 
             updateInfo()
 
+            // Retrieves editor for sharedPreferences
             val editor:SharedPreferences.Editor = sharedPreferences.edit()
 
+            // Stores user input in sharedPreferences
             editor.putString("Result", instructions.text.toString())
             editor.apply()
             editor.commit()
 
         } else {
+            // Retrieves stored result from sharedPreferences if it exists
             if(!(sharedPreferences.getString("Result", "").equals(""))){
                 val sharedNameValue = sharedPreferences.getString("Result","")
                 instructions.text = sharedNameValue
                 updateInfo()
+            // Sets WTD Activity to default page if there is not user input
             } else {
                 instructions.text = defaultResult
                 instructions.setTextColor(Color.parseColor("#8A000000"))
@@ -101,9 +108,11 @@ class WTDFragment : AppCompatActivity() {
         }
     }
 
+    /*
+    * Updates information based on the result that was inputted by user
+    * by setting the different TextViews
+    */
     fun updateInfo(){
-        /*WTD.text = "What To Do"
-        underline.visibility = View.VISIBLE*/
         if(instructions.text == "Critical"){
             instructions.setTextColor(Color.parseColor("#ff0000"))
 
@@ -166,13 +175,13 @@ class WTDFragment : AppCompatActivity() {
 
         }
     }
-
+    // Saves state of activity if it is destroyed
     override fun onSaveInstanceState(outState: Bundle){
         outState.putString("Result", instructions.text.toString())
         super.onSaveInstanceState(outState)
     }
 
-
+    // Retrieves most recent state of the activity when it is created again
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 

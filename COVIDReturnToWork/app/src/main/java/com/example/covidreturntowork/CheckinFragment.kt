@@ -22,6 +22,7 @@ class CheckinFragment : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
 
     private lateinit var buttonSubmit: Button
+    // Represents possible results that the User can get
     private val mResult = arrayListOf<String>("No Symptoms", "Quarantine", "Critical")
 
     private lateinit var checkBox1: CheckBox
@@ -32,7 +33,7 @@ class CheckinFragment : AppCompatActivity() {
     private lateinit var checkBox6: CheckBox
     private lateinit var checkBox7: CheckBox
 
-
+    // Called when app is first created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_checkin)
@@ -68,6 +69,7 @@ class CheckinFragment : AppCompatActivity() {
             true
         }
 
+        //Initializes different views
         checkBox1 = findViewById(R.id.checkBox1)
         checkBox2 = findViewById(R.id.checkBox2)
         checkBox3 = findViewById(R.id.checkBox3)
@@ -82,8 +84,13 @@ class CheckinFragment : AppCompatActivity() {
 
     }
 
+    /*
+    * Finds result based how many checkboxes are checked
+    */
     private fun findResult():String{
         var count = 0
+
+        // Calculates the total weight of the checkboxes selected by user
         if(checkBox1.isChecked){
             count += 3
         }
@@ -107,7 +114,7 @@ class CheckinFragment : AppCompatActivity() {
         }
         var toReturn: String
 
-
+        // Determines result based on total weight
         if(count == 0){
             toReturn = mResult[0]
         } else if(count in 1..5){
@@ -115,6 +122,7 @@ class CheckinFragment : AppCompatActivity() {
         } else {
             toReturn = mResult[2]
         }
+
         return toReturn
     }
 
@@ -131,17 +139,22 @@ class CheckinFragment : AppCompatActivity() {
 
         }
 
+        // Intent used to start the What To Do Activity
         val intent = Intent(this, WTDFragment::class.java)
         intent.putExtra("Result", result)
+
+        // Starts WTD activity
         startActivity(intent)
         overridePendingTransition(0,0)
     }
+
 
     fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
         val formatter = SimpleDateFormat(format, locale)
         return formatter.format(this)
     }
 
+    // Retrieves current date
     fun getCurrentDateTime(): Date {
         return Calendar.getInstance().time
     }

@@ -24,8 +24,6 @@ class WTDFragment : AppCompatActivity() {
     private lateinit var subFourthStep: TextView
     private lateinit var resultMT: TextView
 
-
-
     private var defaultResult = "No Result"
 
     private val sharedPrefFile = "Result"
@@ -34,6 +32,7 @@ class WTDFragment : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_wtd)
 
+        //bottom navigation bar
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_whatToDo
         bottomNavigationView.setOnNavigationItemSelectedListener {
@@ -101,9 +100,8 @@ class WTDFragment : AppCompatActivity() {
         }
     }
 
+    //update what to do based on CDC recommendation https://www.cdc.gov/coronavirus/2019-ncov/if-you-are-sick/steps-when-sick.html
     fun updateInfo(){
-        /*WTD.text = "What To Do"
-        underline.visibility = View.VISIBLE*/
         if(instructions.text == "Critical"){
             instructions.setTextColor(Color.parseColor("#ff0000"))
 
@@ -167,12 +165,13 @@ class WTDFragment : AppCompatActivity() {
         }
     }
 
+    //save old result
     override fun onSaveInstanceState(outState: Bundle){
         outState.putString("Result", instructions.text.toString())
         super.onSaveInstanceState(outState)
     }
 
-
+    //restore result after update info
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 

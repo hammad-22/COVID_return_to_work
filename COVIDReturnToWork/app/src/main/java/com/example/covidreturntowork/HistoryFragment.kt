@@ -17,26 +17,31 @@ class HistoryFragment : AppCompatActivity() {
     private var mDatabase: FirebaseDatabase? = null
     private var mAuth: FirebaseAuth? = null
 
-    internal lateinit var listViewResults: ListView
+    private lateinit var listViewResults: ListView
     internal lateinit var mAdapter: ArrayAdapter<String>
     internal lateinit var results: MutableList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_history)
+
+        //get current user
         mAuth = FirebaseAuth.getInstance()
         val uid = mAuth!!.currentUser?.uid
+
+        //make database reference to current user data
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase!!.reference
         mUserReference = uid?.let { mDatabaseReference!!.child(it) }
 
+        //display listview result
         listViewResults = findViewById<ListView>(R.id.listViewResults)
         listViewResults.emptyView = findViewById(R.id.textViewMT)
         results = ArrayList()
         mAdapter = ArrayAdapter<String>(this,R.layout.layout_user_list, R.id.textView ,results)
         listViewResults.adapter = mAdapter
 
-
+        //bottom navigation bar
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_history
         bottomNavigationView.setOnNavigationItemSelectedListener {
@@ -62,6 +67,8 @@ class HistoryFragment : AppCompatActivity() {
             true
         }
 
+        //taking the snapshot of database values and add it to the result array
+        //update adapter and listview
         mUserReference!!.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                 val value = dataSnapshot.getValue(User::class.java).toString()
@@ -75,6 +82,7 @@ class HistoryFragment : AppCompatActivity() {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
+        //lock orientation to portrait mode
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }

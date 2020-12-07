@@ -1,6 +1,5 @@
 package com.example.covidreturntowork
 
-import android.R.array
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Color
@@ -17,23 +16,14 @@ import ir.farshid_roohi.linegraph.ChartEntity
 import ir.farshid_roohi.linegraph.LineChart
 import java.net.URL
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.concurrent.schedule
 
-
-/**
- * A fragment representing a list of Items.
- */
 class ItemFragment : AppCompatActivity() {
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_item)
 
-        val lineChart:LineChart = findViewById<LineChart>(R.id.lineChart)
         val countryCondition = findViewById<TextView>(R.id.countryNew)
         val countryDeath = findViewById<TextView>(R.id.countryDeath)
         val countryLink = this!!.findViewById<TextView>(R.id.countryLink)
@@ -50,8 +40,7 @@ class ItemFragment : AppCompatActivity() {
             }
         })
 
-
-
+        //bottom navigation bar
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_home
         bottomNavigationView.setOnNavigationItemSelectedListener {

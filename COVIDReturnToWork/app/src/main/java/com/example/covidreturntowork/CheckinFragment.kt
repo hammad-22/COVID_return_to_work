@@ -38,12 +38,16 @@ class CheckinFragment : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_checkin)
 
+        //access current user with uid
         mAuth = FirebaseAuth.getInstance()
         val uid = mAuth!!.currentUser?.uid
+        //getdatabase instance and root reference
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase!!.reference
+        //make a database referent to current user
         mUserReference = uid?.let { mDatabaseReference!!.child(it) }
 
+        //bottom navigation bar
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_checkIn
         bottomNavigationView.setOnNavigationItemSelectedListener{
@@ -65,6 +69,7 @@ class CheckinFragment : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
+            //set 0 transition time
             overridePendingTransition(0,0)
             true
         }
@@ -80,10 +85,14 @@ class CheckinFragment : AppCompatActivity() {
 
         buttonSubmit = findViewById(R.id.submitButton)
         buttonSubmit.setOnClickListener { addResult() }
+
+        //lock orientation to portrait mode
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 
+    //classified the severity of result based of CDC clssification
+    // https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
     private fun findResult():String{
         var count = 0
         if(checkBox1.isChecked){
@@ -142,11 +151,13 @@ class CheckinFragment : AppCompatActivity() {
         overridePendingTransition(0,0)
     }
 
+    //convert system date to string
     fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
         val formatter = SimpleDateFormat(format, locale)
         return formatter.format(this)
     }
 
+    //get current system date
     fun getCurrentDateTime(): Date {
         return Calendar.getInstance().time
     }

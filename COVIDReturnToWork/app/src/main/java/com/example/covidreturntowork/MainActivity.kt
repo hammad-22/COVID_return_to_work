@@ -14,22 +14,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initializeViews()
-
+        registerBtn = findViewById(R.id.register)
+        loginBtn = findViewById(R.id.login)
+        //button to register page
         registerBtn!!.setOnClickListener {
             val intent = Intent(this@MainActivity, RegistrationActivity::class.java)
             startActivity(intent)
         }
+        //button to login page
         loginBtn!!.setOnClickListener {
             val intent = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
         }
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-    }
-
-    private fun initializeViews() {
-        registerBtn = findViewById(R.id.register)
-        loginBtn = findViewById(R.id.login)
     }
 }

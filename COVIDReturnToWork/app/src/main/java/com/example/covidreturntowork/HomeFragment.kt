@@ -1,14 +1,8 @@
 package com.example.covidreturntowork
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager
 import android.graphics.Color
-import android.location.Address
-import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -16,9 +10,6 @@ import android.view.View
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import ir.farshid_roohi.linegraph.ChartEntity
@@ -27,14 +18,14 @@ import java.net.URL
 import java.util.*
 import kotlin.concurrent.schedule
 
-
 class HomeFragment : AppCompatActivity() {
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_home)
 
+        //create bottom navigation bar
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        //set default to home
         bottomNavigationView.selectedItemId = R.id.navigation_home
         bottomNavigationView.setOnNavigationItemSelectedListener{
             when(it.itemId) {
@@ -118,7 +109,7 @@ class HomeFragment : AppCompatActivity() {
         val stateLink = findViewById<TextView>(R.id.stateLink)
 
         val spinner: Spinner = findViewById(R.id.states_spinner)
-// Create an ArrayAdapter using the string array and a default spinner layout
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             this,
             R.array.states_array,

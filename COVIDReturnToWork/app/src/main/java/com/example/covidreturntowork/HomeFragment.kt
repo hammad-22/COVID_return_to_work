@@ -209,61 +209,18 @@ class HomeFragment : AppCompatActivity() {
             }
         })
 
-
-        fusedLocationClient = this?.let { LocationServices.getFusedLocationProviderClient(it) }!!
-
-
-        @SuppressLint("MissingPermission")
-        fun obtieneLocalizacion(){
-
-
-
-            if (ActivityCompat.checkSelfPermission(
-                    this!!,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    this!!,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return
-            }
-
-
-
-
-            fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-                    latitude = location?.latitude!!
-                    longitude = location?.longitude
-                    val geocoder = Geocoder(this, Locale.getDefault())
-                    val addresses: List<Address> = geocoder.getFromLocation(latitude, longitude, 1)
-                    stateName = addresses[0].adminArea
-
-                    val compareValue = stateName
-                    val adapter = ArrayAdapter.createFromResource(
-                        this,
-                        R.array.states_array,
-                        R.layout.custom_xml_spinner_layout
-                    )
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                    mySpinner.setAdapter(adapter)
-                    if (compareValue != null) {
-                        val spinnerPosition = adapter.getPosition(compareValue)
-                        mySpinner.setSelection(spinnerPosition)
-                    }
-                }
+        val compareValue = stateName
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.states_array,
+            R.layout.custom_xml_spinner_layout
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        mySpinner.setAdapter(adapter)
+        if (compareValue != null) {
+            val spinnerPosition = adapter.getPosition(compareValue)
+            mySpinner.setSelection(spinnerPosition)
         }
-        obtieneLocalizacion()
-
-
 
         val thread = Thread {
             try {
@@ -315,8 +272,6 @@ class HomeFragment : AppCompatActivity() {
                     listDate.add(text)
                 }
                 lineChart.setLegend(listDate)
-
-
 
                 for(x in 0 until dataST.size) {
                     if(dataST[x].state == states[stateName]) {
@@ -463,8 +418,6 @@ class HomeFragment : AppCompatActivity() {
                         }
                         lineChart.setLegend(listDate)
 
-
-
                         for(x in 0 until dataST.size) {
                             if(dataST[x].state == keyList[position]) {
                                 textView2.setText("" + dataST[x].positiveIncrease + " new cases")
@@ -473,7 +426,6 @@ class HomeFragment : AppCompatActivity() {
                                     stateCondition.setText("Unsafe \uD83D\uDE37")
                                 }
                                 stateLink.setText(Html.fromHtml("<a href=" + meta[x].covid19Site + ">More State Info</a>"))
-
 
                             }
 

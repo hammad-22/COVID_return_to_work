@@ -56,13 +56,13 @@
 
     <TextView
         android:id="@+id/country"
-        android:layout_width="match_parent"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
 
         android:layout_below="@+id/textView3"
         android:layout_marginTop="130dp"
         android:gravity="center"
-        android:text="United States Daily Change"
+        android:text="US Daily Change"
         android:textColor="@color/black"
         android:textSize="30sp" />
 

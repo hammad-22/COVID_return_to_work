@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
@@ -26,7 +25,6 @@ import com.google.gson.Gson
 import java.net.URL
 import java.util.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -137,22 +135,22 @@ class HomeFragment : AppCompatActivity() {
 
         var latitude = 0.0
         var longitude = 0.0
-        var inf = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView2 = inf!!.findViewById<TextView>(R.id.textView2)
-        val textView3 = inf!!.findViewById<TextView>(R.id.textView3)
-        val state = inf!!.findViewById<TextView>(R.id.state)
-        val stateCondition = inf!!.findViewById<TextView>(R.id.stateOrder)
-        val countryCondition = inf!!.findViewById<TextView>(R.id.countryNew)
-        val countryDeath = inf!!.findViewById<TextView>(R.id.countryDeath)
-        val stateLink = inf!!.findViewById<TextView>(R.id.stateLink)
-        val countryLink = inf!!.findViewById<TextView>(R.id.countryLink)
-        val countryOrder = inf!!.findViewById<TextView>(R.id.countryOrder)
+
+        val textView2 = findViewById<TextView>(R.id.textView2)
+        val textView3 = findViewById<TextView>(R.id.textView3)
+        val state = findViewById<TextView>(R.id.state)
+        val stateCondition = findViewById<TextView>(R.id.stateOrder)
+        val countryCondition = findViewById<TextView>(R.id.countryNew)
+        val countryDeath = findViewById<TextView>(R.id.countryDeath)
+        val stateLink = findViewById<TextView>(R.id.stateLink)
+        val countryLink = this!!.findViewById<TextView>(R.id.countryLink)
+        val countryOrder = this!!.findViewById<TextView>(R.id.countryOrder)
         var stateName = "Maryland"
 
         val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
-        activity?.let { ActivityCompat.requestPermissions(it, permissions, 0) }
+        this?.let { ActivityCompat.requestPermissions(it, permissions, 0) }
 
-        fusedLocationClient = activity?.let { LocationServices.getFusedLocationProviderClient(it) }!!
+        fusedLocationClient = this?.let { LocationServices.getFusedLocationProviderClient(it) }!!
 
 
         @SuppressLint("MissingPermission")
@@ -161,10 +159,10 @@ class HomeFragment : AppCompatActivity() {
 
 
             if (ActivityCompat.checkSelfPermission(
-                    activity!!,
+                    this!!,
                     Manifest.permission.ACCESS_FINE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    activity!!,
+                    this!!,
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
@@ -179,13 +177,13 @@ class HomeFragment : AppCompatActivity() {
             }
 
 
-    }
+
 
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location: Location? ->
                     latitude = location?.latitude!!
                     longitude = location?.longitude
-                    val geocoder = Geocoder(activity, Locale.getDefault())
+                    val geocoder = Geocoder(this, Locale.getDefault())
                     val addresses: List<Address> = geocoder.getFromLocation(latitude, longitude, 1)
                     stateName = addresses[0].adminArea
                     state.setText(stateName+ " Daily Change")
@@ -251,7 +249,5 @@ class HomeFragment : AppCompatActivity() {
 
         thread.start()
 
-        return inf
     }
-
 }
